@@ -1,0 +1,50 @@
+
+		Hello World Tutorial
+
+
+    This example is a simple hello program that prints "Hello World!"
+    on the 68HC11 serial line.  It is self contained by the fact that
+    it does not use any include, Makefile or configuration file of GEL.
+
+    To compile this program, you can use the following command:
+
+        m6811-elf-gcc -g -Os -mshort -Wl,-m,m68hc11elfb -o hello.elf hello.c
+
+    This will produce the `hello.elf' file.  This file in a binary file
+    in the ELF/DWARF-2 standard format.  It contains the 68HC11 binary
+    code, the symbols and the debugging information suitable for gdb.
+    To obtain the S19 file corresponding to the program, you can use
+    the following command:
+
+        m6811-elf-objcopy --only-section=.text --only-section=.rodata \
+                          --only-section=.vectors --only-section=.data \
+                          --output-target=srec hello.elf hello.s19
+
+    and this will produce `hello.s19' file in Motorola S19 format.
+
+    Note:  You can also use the Makefile and type:
+
+        make
+
+    To run or test this program, you can use the simulator or gdb:
+
+    m6811-elf-run hello.elf
+
+    or
+
+    m6811-elf-gdb hello.elf
+    (gdb) target sim
+    (gdb) load
+    (gdb) run
+
+    From the debugger you can execute step by step the program if you
+    do the following:
+
+    (gdb) target sim
+    (gdb) load
+    (gdb) b main
+    Breakpoint 1 at 0x6e: file hello.c, line 166.
+    (gdb) run
+    ...
+    (gdb) next
+    ...
