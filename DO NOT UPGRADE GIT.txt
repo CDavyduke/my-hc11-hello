@@ -1,0 +1,1 @@
+Do not upgrade to Git version 1.7.8, because it is a fucking piece of fucking shit!!!
