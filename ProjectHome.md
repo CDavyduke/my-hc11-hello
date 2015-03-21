@@ -1,0 +1,1 @@
+This project prints the standard "Hello world" message that beginner programmers have been programming since the dawn of time and sends it out the serial port of the HC11.
